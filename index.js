@@ -5,7 +5,7 @@ import axios from "axios";
 import fetch from "node-fetch";
 
 const APP = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 /**
  * All the constants used to be easily modified.
@@ -22,7 +22,7 @@ APP.use(json());
 /**
  * Launch the API on localhost with the given port.
  */
-//APP.listen(PORT, () => console.log(`L'API tourne sur http://localhost:${PORT}`));
+APP.listen(PORT, () => console.log(`L'API tourne sur http://localhost:${PORT}`));
 
 APP.get("/menu", async (req, res) => {
     res.send({ menu: getSandwichesList() });
