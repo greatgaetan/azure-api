@@ -22,7 +22,7 @@ APP.use(json());
 /**
  * Launch the API on localhost with the given port.
  */
-APP.listen(PORT, () => console.log(`L'API tourne sur http://localhost:${PORT}`));
+//APP.listen(PORT, () => console.log(`L'API tourne sur http://localhost:${PORT}`));
 
 APP.get("/menu", async (req, res) => {
     res.send({ menu: getSandwichesList() });
