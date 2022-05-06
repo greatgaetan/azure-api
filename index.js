@@ -55,11 +55,10 @@ APP.get("/delivery", async (req, res) => {
         var city = req.rawHeaders[9];
         var restaurantLocation = "50.666180,5.632890";
         console.log("city is: " + city);
-        console.log(`http://api.openweathermap.org/geo/1.0/direct?q=${city}, belgium&limit=10&appid=${CONFIG.OPENWEATHERAPI_KEY}`);
         await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}, belgium&limit=10&appid=${CONFIG.OPENWEATHERAPI_KEY}`)
             .then((resp) => resp.json())
             .then(async (data) => {
-                console.log("first fetch is ok");
+                console.log(data);
                 var weatherInfo = await getWeatherInfo(data[0].lat, data[0].lon);
                 /**
                  * Making the request to have the estimated time to deliver the order.
