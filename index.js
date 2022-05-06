@@ -52,6 +52,7 @@ APP.get("/delivery", async (req, res) => {
     let deliveryMin = 0;
     let requestIsOk = false;
     try {
+        console.log("raw: " + req.rawHeaders);
         var city = req.rawHeaders[9];
         var restaurantLocation = "50.666180,5.632890";
         console.log("city is: " + city);
