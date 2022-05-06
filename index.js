@@ -53,7 +53,15 @@ APP.get("/delivery", async (req, res) => {
     let requestIsOk = false;
     try {
         console.log("raw: " + req.rawHeaders);
-        var city = req.rawHeaders[9];
+        let city = "";
+        for(let i = 0; i < req.rawHeaders.length; i++) {
+            if(req.rawHeaders[i] == "City") {
+                city = req.rawHeaders[i+1];
+                break;
+            }
+        };
+
+        var city = req.rawHeaders[5];
         var restaurantLocation = "50.666180,5.632890";
         console.log("city is: " + city);
         await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}, belgium&limit=10&appid=${CONFIG.OPENWEATHERAPI_KEY}`)
